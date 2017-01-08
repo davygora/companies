@@ -1,4 +1,5 @@
 class Api::V1::CompaniesController < ApplicationController
+  before_filter :restrict_access
   respond_to :json
 
   #GET /companies
@@ -42,5 +43,10 @@ private
 
   def company_params
     params.require(:company).permit(:name, :location)
+  end
+
+  def restrict_access
+    api_key = ApiKey.find_by_access_token(params[:access_token])
+    head :unauthorized unless api_key
   end
 end

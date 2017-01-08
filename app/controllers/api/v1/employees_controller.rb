@@ -1,4 +1,5 @@
 class Api::V1::EmployeesController < ApplicationController
+  before_filter :restrict_access
   respond_to :json
 
   #GET /employees
@@ -42,5 +43,10 @@ private
 
   def employee_params
     params.require(:employee).permit(:first_name, :last_name, :title, :birthday, :email, :phone, :company_id)
+  end
+
+  def restrict_access
+    api_key = ApiKey.find_by_access_token(params[:access_token])
+    head :unauthorized unless api_key
   end
 end
