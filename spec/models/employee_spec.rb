@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 describe Employee do
-   before { @employee = FactoryGirl.build(:employee) }
-
-   subject { @employee }
 
   context 'validations' do
     before(:each) do
@@ -25,32 +22,32 @@ describe Employee do
   end
 
   context 'if some attributes equal nil' do
-    it "is not valid without a " do
+    it "is not valid without a first_name " do
       employee = Employee.new(first_name: nil)
       employee.should_not be_valid
     end
 
-    it "is not valid without a " do
+    it "is not valid without a last_name" do
       employee = Employee.new(last_name: nil)
       employee.should_not be_valid
     end
 
-    it "is not valid without a " do
+    it "is not valid without a title" do
       employee = Employee.new(title: nil)
       employee.should_not be_valid
     end
 
-    it "is not valid without a " do
+    it "is not valid without a birthday" do
       employee = Employee.new(birthday: nil)
       employee.should_not be_valid
     end
 
-    it "is not valid without a " do
+    it "is not valid without a email" do
       employee = Employee.new(email: nil)
       employee.should_not be_valid
     end
 
-    it "is not valid without a " do
+    it "is not valid without a phone" do
       employee = Employee.new(phone: nil)
       employee.should_not be_valid
     end

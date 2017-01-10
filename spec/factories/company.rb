@@ -9,7 +9,7 @@ FactoryGirl.define do
       end
 
       after(:create) do |company, evaluator|
-        create_list(:employees, evaluator.employees_countm, company: company)
+        create_list(:employees, evaluator.employees_count, company: company)
       end
     end
   end

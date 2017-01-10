@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 describe Company do
-   before { @company = FactoryGirl.build(:company) }
-
-   subject { @company }
 
   context 'validations' do
     before(:each) do

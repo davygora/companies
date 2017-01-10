@@ -11,21 +11,20 @@ describe Api::V1::CompaniesController do
 
     it 'returns the info about a company on a hash' do
       company_response = JSON.parse(response.body, symbolize_names: true)
-      expect(company_response[:name]).to eql @company.name
+      expect(company_response[:company][:name]).to eql @company[:name]
     end
 
     it { expect(response).to have_http_status(200) }
   end
 
-  # describe "GET #show" do
-  #   before(:each) do
-  #     @company = FactoryGirl.create :company
-  #     #get :show, id: @company.id, format: :json
-  #     get :index, id: @company, format: :json
-  #   end
+  describe "GET #show" do
+    before(:each) do
+      @company = FactoryGirl.create :company
+      get :show, id: @company, format: :json
+    end
 
-  #   it { expect(response).to have_http_status(401) }
-  # end
+    it { expect(response).to have_http_status(401) }
+  end
 
   describe "POST #create" do
     context "when is successfully created" do

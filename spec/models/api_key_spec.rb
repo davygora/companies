@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 describe ApiKey do
-   before { @api_key = FactoryGirl.build(:api_key) }
-
-   subject { @api_key }
 
   context 'validations' do
     before(:each) do
@@ -21,7 +18,7 @@ describe ApiKey do
   end
 
   context 'if some attributes equal nil' do
-    it "is not valid without a name" do
+    it "is not valid without an access_token" do
       api_key = ApiKey.new(access_token: nil)
       api_key.should_not be_valid
     end
