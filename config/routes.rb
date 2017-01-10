@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  apipie
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   namespace :api, defaults:{ format: :json } do
