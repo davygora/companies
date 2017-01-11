@@ -5,7 +5,7 @@ class Api::V1::CompaniesController < ApplicationController
 
   #DRY with param_group
   def_param_group :company do
-    param :companies, Hash, desc: 'Company information' do
+    param :company, Hash, desc: 'Company information' do
       param :name, String, desc: 'Name of company'
       param :location, String, desc: 'Location of company'
       param :employees, Array, of: Hash, desc: 'Array of employees'
